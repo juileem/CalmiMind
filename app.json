@@ -4,27 +4,21 @@
     "slug": "calmi",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#8B7FD1"
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#8B7FD1"
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Calmimind uses the camera to scan QR codes and barcodes."
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "android": {
+      "permissions": [
+        "CAMERA"
+      ]
+    },
+    "web": {}
   }
 }

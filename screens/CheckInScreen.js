@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+import { Button } from 'react-native-paper';
 
-export default function CheckInScreen() {
+export default function CheckInScreen({ onComplete }) {
   const [checkIns, setCheckIns] = useState({
     sleep: null,
     stress: null,
@@ -111,7 +112,7 @@ export default function CheckInScreen() {
         <BlurView intensity={20} tint="light" style={styles.breathingCard}>
           <View style={styles.cardContent}>
             <View style={styles.breathingHeader}>
-              <Icon name="lung" size={40} color="#C8B5F5" />
+              <Icon name="lungs" size={40} color="#C8B5F5" />
               <Text style={styles.breathingTitle}>Breathing Exercise</Text>
             </View>
             <Text style={styles.breathingSubtitle}>Coming soon: Guided breathing sessions</Text>
@@ -120,6 +121,17 @@ export default function CheckInScreen() {
             </View>
           </View>
         </BlurView>
+
+        {onComplete && (
+          <Button
+            mode="contained"
+            style={styles.submitButton}
+            labelStyle={styles.submitButtonText}
+            onPress={onComplete}
+          >
+            Submit Check-In
+          </Button>
+        )}
       </ScrollView>
     </LinearGradient>
   );
@@ -237,5 +249,22 @@ const styles = StyleSheet.create({
     color: '#C8B5F5',
     fontSize: 14,
     fontWeight: '600',
+  },
+  submitButton: {
+    borderRadius: 25,
+    paddingVertical: 8,
+    backgroundColor: '#C8B5F5',
+    marginTop: 30,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
+  },
+  submitButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#3A2A6B',
   },
 });
